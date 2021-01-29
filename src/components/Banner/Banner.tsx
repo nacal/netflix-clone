@@ -13,22 +13,21 @@ type movieProps = {
 
 export const Banner = () => {
   const [movie, setMovie] = useState<movieProps>({})
+
   useEffect(() => {
     async function fetchData() {
       const request = await axios.get(requests.feachNetflixOriginals)
-      console.log(request.data.result)
 
       //apiからランダムで値を取得している
       setMovie(
         request.data.results[
-          Math.floor(Math.random() * request.data.results.length - 1)
+          Math.floor(Math.random() * request.data.results.length)
         ],
       )
       return request
     }
-    fetchData()
+    setInterval(fetchData, 10000)
   }, [])
-  console.log(movie)
 
   // descriptionの切り捨て関数
   function truncate(str: any, n: number) {
