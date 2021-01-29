@@ -29,13 +29,10 @@ export const Row = ({ title, fetchUrl, isLargeRow }: Props) => {
     fetchData()
   }, [fetchUrl])
 
-  console.log(movies)
-
   return (
     <div className="Row">
       <h2>{title}</h2>
       <div className="Row-posters">
-        {/* ポスターコンテンツ */}
         {movies.map((movie) => (
           <img
             key={movie.id}
